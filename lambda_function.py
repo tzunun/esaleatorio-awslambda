@@ -6,7 +6,7 @@ import subprocess
 from datetime import datetime
 
 repository_name = 'esaleatorio'
-commit_message = ''.join(['Pushed new posts, deleted old ones from AWS Lambda at ', str(datetime.now())])
+commit_message = ''.join(['From AWS Lambda pushed new posts and deleted old ones at ', str(datetime.now())])
 folder_path = 'content/'
 test_file = "Ramdom text from AWS Lamda, Test 2!"
 branch_name = 'master'
