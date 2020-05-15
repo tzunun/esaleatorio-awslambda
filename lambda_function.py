@@ -18,22 +18,23 @@ subprocess.call('news_handler.py', shell=True)
 def lambda_handler(event, context):
     client = boto3.client('codecommit')
     response = client.get_folder(repositoryName=repository_name, folderPath=folder_path)
-    keys = response['files']
+    current_posts = response['files']
     commit_id = response['commitId']
-        
-    old_posts = []
-    for key in keys:
-        old_posts.append({'filePath': key.get('absolutePath')})
-
     posts = glob.glob('/tmp/post*.md')
-
     new_posts = []
+    old_posts = []
+
+
+    for post in current_posts:
+        old_posts.append({'filePath': post.get('absolutePath')})
+
+
     for post in posts:
         new_posts.append({'filePath': ''.join(['content/posts/', post]),
-                        #'fileContent': str.encode(post), 
                         'sourceFile': {'filePath': ''.join(['/tmp/', post])}
                         })
         
+
     commit_response = client.create_commit(
         repositoryName=repository_name,
         branchName=branch_name,

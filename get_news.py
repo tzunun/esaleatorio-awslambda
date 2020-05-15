@@ -8,15 +8,16 @@ script_directory = os.path.dirname(os.path.abspath(__file__))
 posts_directory = '/tmp'
 maxitem_url = 'https://hacker-news.firebaseio.com/v0/maxitem.json'
 maxitem = requests.get(maxitem_url, timeout=20).json()
-#latest_post_file = 'python_scripts/latest_post_id'
 
 class Story: 
 
-    '''Create a story markdown, by first obtaining information from news.ycombinator using the item number 
+    '''
+    Create a story markdown, by first obtaining information from news.ycombinator using the item number 
     the json response contains the id, stroy title and the the story url. 
     Using that url we are able to get the story content and the this gets converted to markdown in order to be translated to Spanish.
 
-    The markdown convertion helps to get the story in a format that can then be saved a posted almost immediately.''' 
+    The markdown convertion helps to get the story in a format that can then be saved a posted almost immediately.
+    ''' 
 
     def __init__(self, url): 
         self.id = ''
@@ -36,7 +37,6 @@ class Story:
     
     def story_markdown(self): 
         ''' Will return the story's text in markdown format ''' 
-        #print('Creating markdown ...') 
         html_to_markdown = html2text.HTML2Text() 
         html_to_markdown.ignore_links = False 
         self.markdown = html_to_markdown.handle(self.content) 
@@ -69,12 +69,3 @@ def create_post(story_id, story_title, story_url, story_markdown_content):
 
     with open(new_post, 'w') as file:
         file.write(post_content)
-
-##def get_latest_post_id(file):
-#    with open(file, 'r') as f:
-#        return int(f.read())
-#
-## save the new latest_post
-#def save_latest_post_id(post_id):
-#    with open(latest_post_file, 'w') as file:
-#        file.write(post_id)
