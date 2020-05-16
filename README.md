@@ -17,7 +17,7 @@ antonio@workstation:~$ pip install --target ./package -r requirements.txt
 
 antonio@workstation:~$ cd package/
 
-antonio@workstation:~$ zip -r9 ${OLDPWD}/function.zip
+antonio@workstation:~$ zip -r9 ${OLDPWD}/function.zip .
 
 antonio@workstation:~$ cd $OLDPWD
 
