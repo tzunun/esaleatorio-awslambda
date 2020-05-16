@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     for item in items_urls_list:
 
-        if post_count >= 2:
+        if post_count >= 10:
             #get_news.save_latest_post_id(latest_post_id)
             break
 
