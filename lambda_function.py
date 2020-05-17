@@ -11,7 +11,7 @@ folder_path = 'content/'
 branch_name = 'master'
 
 
-# Create new posts in /tmp directory of the aws lambda environment
+# Create new posts in tmp directory of the aws lambda environment
 subprocess.call('news_handler.py', shell=True)
     
 def lambda_handler(event, context):
@@ -19,7 +19,7 @@ def lambda_handler(event, context):
     response = client.get_folder(repositoryName=repository_name, folderPath=folder_path)
     current_posts = response['files']
     commit_id = response['commitId']
-    posts = glob.glob('/tmp/post*.md')
+    posts = glob.glob('tmp/post*.md')
     new_posts = []
     old_posts = []
 
@@ -30,7 +30,7 @@ def lambda_handler(event, context):
 
     for post in posts:
         new_posts.append({'filePath': ''.join(['content/posts/', post]),
-                        'sourceFile': {'filePath': ''.join(['/tmp/', post])}
+                        'sourceFile': {'filePath': ''.join(['tmp/', post])}
                         })
         
 
