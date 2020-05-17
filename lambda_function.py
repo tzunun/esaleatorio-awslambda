@@ -31,16 +31,17 @@ def lambda_handler(event, context):
         new_posts.append({'filePath': ''.join(['content/posts/', post]),
                         'sourceFile': {'filePath': post}
                         })
-        
 
-    commit_response = client.create_commit(
-        repositoryName=repository_name,
-        branchName=branch_name,
-        parentCommitId=commit_id,
-        authorName='Antonio Hernandez',
-        email='antonio@mlmusings.com',
-        commitMessage=commit_message,
-        keepEmptyFolders=True,
-        putFiles=new_posts,
-        deleteFiles = old_posts
-        )
+    return posts    
+
+    #commit_response = client.create_commit(
+    #    repositoryName=repository_name,
+    #    branchName=branch_name,
+    #    parentCommitId=commit_id,
+    #    authorName='Antonio Hernandez',
+    #    email='antonio@mlmusings.com',
+    #    commitMessage=commit_message,
+    #    keepEmptyFolders=True,
+    #    putFiles=new_posts,
+    #    deleteFiles = old_posts
+    #    )

@@ -8,7 +8,7 @@ if __name__ == "__main__":
     maxitem = get_news.maxitem
     item_list = []
     stories_urls_list = []
-    new_items = maxitem - 200
+    new_items = maxitem - 2000
     post_count = 0
 
     for i in range(new_items, maxitem):
@@ -20,7 +20,7 @@ if __name__ == "__main__":
 
     for item in items_urls_list:
 
-        if post_count >= 10:
+        if post_count >= 50:
             break
 
         response = get_news.check_url(item)
