@@ -1,6 +1,5 @@
 import json
 import os
-import glob
 import boto3
 import subprocess
 from datetime import datetime
@@ -19,7 +18,7 @@ def lambda_handler(event, context):
     response = client.get_folder(repositoryName=repository_name, folderPath=folder_path)
     current_posts = response['files']
     commit_id = response['commitId']
-    posts = glob.glob('tmp/post*.md')
+    posts = os.listdir('/tmp/')
     new_posts = []
     old_posts = []
 
@@ -30,7 +29,7 @@ def lambda_handler(event, context):
 
     for post in posts:
         new_posts.append({'filePath': ''.join(['content/posts/', post]),
-                        'sourceFile': {'filePath': ''.join(['tmp/', post])}
+                        'sourceFile': {'filePath': post}
                         })
         
 

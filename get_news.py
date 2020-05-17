@@ -5,7 +5,7 @@ from datetime import datetime
 from readability import Document
 
 script_directory = os.path.dirname(os.path.abspath(__file__)) 
-posts_directory = 'tmp/'
+posts_directory = '/tmp/'
 maxitem_url = 'https://hacker-news.firebaseio.com/v0/maxitem.json'
 maxitem = requests.get(maxitem_url, timeout=20).json()
 

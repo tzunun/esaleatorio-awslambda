@@ -1,6 +1,4 @@
 import get_news
-import os
-import glob
 
 if __name__ == "__main__":
 
