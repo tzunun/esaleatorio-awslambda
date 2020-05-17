@@ -8,7 +8,6 @@ from datetime import datetime
 repository_name = 'esaleatorio'
 commit_message = ''.join(['From AWS Lambda pushed new posts and deleted old ones at ', str(datetime.now())])
 folder_path = 'content/'
-test_file = "Ramdom text from AWS Lamda, Test 2!"
 branch_name = 'master'
 
 
@@ -25,8 +24,8 @@ def lambda_handler(event, context):
     old_posts = []
 
 
-    for post in current_posts:
-        old_posts.append({'filePath': post.get('absolutePath')})
+    for current_post in current_posts:
+        old_posts.append({'filePath': current_post.get('absolutePath')})
 
 
     for post in posts:
