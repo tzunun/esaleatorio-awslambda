@@ -1,2 +1,4 @@
-readability-lxml
 html2text
+lxml
+readability-lxml
+requests
