@@ -14,13 +14,10 @@ posts_directory = os.path.abspath('/tmp')
 maxitem_url = 'https://hacker-news.firebaseio.com/v0/maxitem.json'
 maxitem = requests.get(maxitem_url, timeout=20).json()
 repository_name = 'esaleatorio'
-commit_message = ''.join(['From AWS Lambda pushed new posts and deleted old ones at ', str(datetime.now())])
+commit_message = ''.join(['From AWS Lambda pushed new posts at ', str(datetime.now())])
 folder_path = 'content/'
 branch_name = 'master'
-    
 client = boto3.client('codecommit')
-s3= boto3.resource('s3')
-bucket = s3.Bucket('esaleatorios3bucket')
 
 class Story: 
 
@@ -142,9 +139,6 @@ def lambda_handler(event, context):
                         'fileContent': str.encode(post)
                         })
 
-
-    print(new_posts)
-    
 
     commit_response = client.create_commit(
         repositoryName=repository_name,
