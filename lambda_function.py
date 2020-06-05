@@ -135,7 +135,7 @@ def lambda_handler(event, context):
 
     for index,post in enumerate(posts, start=0):
         
-        new_posts.append({'filePath': ''.join(['content/posts/post', str(index)],'.md'),
+        new_posts.append({'filePath': ''.join(['content/posts/post', str(index),'.md']),
                         'fileContent': str.encode(post)
                         })
 
